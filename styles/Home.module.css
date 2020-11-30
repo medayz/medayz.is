@@ -12,8 +12,19 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+}
+
+.bio {
+  line-height: 1.69em;
+}
+
+.icon_text {
+  display: flex;
   align-items: center;
+}
+
+.icon_text > span {
+  margin-left: .42em;
 }
 
 .footer {
