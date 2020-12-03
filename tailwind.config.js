@@ -6,17 +6,20 @@ module.exports = {
   theme: {
     extend: {},
     container: {
-      center: true,
+      center: true
     },
     colors: {
       teal: colors.teal,
       emerald: colors.emerald,
-      gray: colors.gray,
+      gray: colors.blueGray,
       green: colors.green,
-    },
+      blue: colors.blue,
+      yellow: colors.yellow,
+      purple: colors.purple
+    }
   },
   variants: {
-    extend: {},
+    extend: {}
   },
-  plugins: [],
+  plugins: []
 };

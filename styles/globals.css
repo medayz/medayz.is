@@ -9,7 +9,7 @@ body {
   margin: 0;
   min-height: 100vh;
   min-width: 100vw;
-  @apply dark:bg-gray-900 font-mono text-green-600 dark:text-green-200 bg-gray-50;
+  @apply dark:bg-gray-900 font-mono text-blue-900 dark:text-blue-50 bg-gray-50;
 }
 
 a {
@@ -19,4 +19,8 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+*:focus {
+  outline: none !important;
 }

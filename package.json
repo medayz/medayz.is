@@ -8,7 +8,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-brands-svg-icons": "^5.15.1",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.13",
     "autoprefixer": "^10.0.4",
+    "clsx": "^1.1.1",
+    "dotenv": "^8.2.0",
     "next": "^10.0.3",
     "postcss": "^8.1.7",
     "react": "17.0.1",
