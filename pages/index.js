@@ -34,7 +34,7 @@ export default function Home({ avatar, repos }) {
       </Head>
 
       <main>
-        <section>
+        <section className="text-xs">
           <img
             className="rounded-full border-solid border-2 border-gray-50 my-8"
             src={avatar}
@@ -42,20 +42,30 @@ export default function Home({ avatar, repos }) {
             height={100}
             width={100}
           />
-          <p className="mb-2">
+          <p className="flex flex-col mb-4">
+            <span className="text-gray-400 mb-1">{"> whoami"}</span>
+            <span>medayz</span>
+          </p>
+          <p className="flex flex-col">
+            <span className="text-gray-400 mb-1">{"> cat bio"}</span>
+          </p>
+          <p className="mb-4">
             Hello, my full name is Mohamed Ayoub Zahir! too long right ? 😁
           </p>
-          <p className="mb-2">
+          <p className="mb-4">
             Well you can call me Ayoub, and on internet I just use medayz
             everywhere as my username!
           </p>
-          <div className="flex flex-row sm:items-center mb-2">
+          <p className="mb-8">
+            I spend my time either creating bugs or fixing them
+          </p>
+          <div className="flex flex-row sm:items-center mb-4">
             <div className="flex sm:items-center flex-shrink-0">
               <Image
                 src="/js.png"
                 alt="JS logo"
-                width={24}
-                height={24}
+                width={21}
+                height={21}
                 layout="fixed"
               />
             </div>
@@ -66,8 +76,8 @@ export default function Home({ avatar, repos }) {
               <Image
                 src="/react.png"
                 alt="React logo"
-                width={24}
-                height={24}
+                width={21}
+                height={21}
                 layout="fixed"
               />
             </div>
@@ -77,8 +87,12 @@ export default function Home({ avatar, repos }) {
             </p>
           </div>
         </section>
-        <section className="my-16">
-          <div className="grid sm:grid-cols-2 gap-8 font-sans">
+
+        <section className="my-20 rounded-md bg-gray-100 dark:bg-gray-900 border-solid border border-gray-100 dark:border-gray-800">
+          <h3 className="absolute -mt-8 text-md font-sans font-bold mb-4 text-purple-700 dark:text-orange-200 dark:bg-gray-900">
+            Public repositories:
+          </h3>
+          <div className="grid sm:grid-cols-2 gap-8 justify-center font-sans md:py-6 py-12 px-6">
             {repos.map(function RepoCard({
               id,
               name,
@@ -91,7 +105,6 @@ export default function Home({ avatar, repos }) {
               const urlSpanRef = useRef();
 
               const getLangLogo = (lang) => {
-                console.log(lang);
                 if (lang === "JavaScript") {
                   return "/js.png";
                 } else if (lang === "PHP") {
@@ -104,10 +117,10 @@ export default function Home({ avatar, repos }) {
               return (
                 <div
                   key={id}
-                  className="border-solid border-2 border-blue-50 dark:border-gray-800 rounded-md"
+                  className="max-w-xs border-solid border border-blue-100 rounded-lg dark:shadow-lg dark:border-gray-700 bg-gray-50 dark:bg-gray-900"
                 >
                   <div className="h-full flex flex-col justify-between">
-                    <div className="flex justify-between bg-blue-50 dark:bg-gray-800 p-2">
+                    <div className="flex justify-between bg-gray-100 dark:bg-gray-900 p-2 rounded-t-lg border-b-2 border-gray-50 dark:border-gray-800 dark:shadow-lg">
                       <div className="flex items-center">
                         {lang ? (
                           <Image
@@ -120,7 +133,7 @@ export default function Home({ avatar, repos }) {
                         ) : (
                           <FontAwesomeIcon icon={faGithub} />
                         )}
-                        <span className="ml-2">{name}</span>
+                        <span className="font-medium text-md ml-2">{name}</span>
                       </div>
                       <a href={url} target="_blank">
                         <FontAwesomeIcon icon={faExternalLinkAlt} size="sm" />
@@ -128,7 +141,7 @@ export default function Home({ avatar, repos }) {
                     </div>
 
                     {description && (
-                      <p className="text-sm text-gray-400 dark:text-gray-300 px-3 py-4">
+                      <p className="font-extralight text-sm text-gray-400 dark:text-orange-50 px-3 py-2">
                         {description}
                       </p>
                     )}
