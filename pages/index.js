@@ -3,7 +3,11 @@ import Head from "next/head";
 import Image from "next/image";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGitAlt, faGithub } from "@fortawesome/free-brands-svg-icons";
+import {
+  faGitAlt,
+  faGithub,
+  faTwitter
+} from "@fortawesome/free-brands-svg-icons";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 
 const styles = {};
@@ -25,7 +29,13 @@ async function selectText(node) {
   window.getSelection().removeAllRanges();
 }
 
-export default function Home({ avatar, repos }) {
+export default function Home({
+  avatar,
+  url,
+  twitter_username,
+  github_username,
+  repos
+}) {
   return (
     <div className="container mx-auto max-w-2xl p-6">
       <Head>
@@ -34,14 +44,32 @@ export default function Home({ avatar, repos }) {
       </Head>
 
       <main>
-        <section className="text-xs">
+        <section className="flex">
           <img
-            className="rounded-full border-solid border-2 border-gray-50 my-8"
+            className="rounded-full border-solid border-2 border-gray-50 my-8 mr-4"
             src={avatar}
-            alt="my twitter picture"
+            alt="my github avatar"
             height={100}
             width={100}
           />
+          <div className="flex flex-col justify-center">
+            <a
+              href={`https://twitter.com/${twitter_username}`}
+              target="_blank"
+              className="flex items-center mb-2"
+            >
+              <FontAwesomeIcon icon={faTwitter} />
+              <span className="text-xs ml-2 font-sans font-light">{`@${twitter_username}`}</span>
+            </a>
+            <a href={url} target="_blank" className="flex items-center mb-2">
+              <FontAwesomeIcon icon={faGithub} />
+              <span className="text-xs ml-2 font-sans font-light">
+                {github_username}
+              </span>
+            </a>
+          </div>
+        </section>
+        <section className="text-xs">
           <p className="flex flex-col mb-4">
             <span className="text-gray-400 mb-1">{"> whoami"}</span>
             <span>medayz</span>
@@ -222,7 +250,10 @@ export async function getStaticProps() {
 
   return {
     props: {
+      url: user_data.html_url,
       avatar: user_data.avatar_url,
+      twitter_username: user_data.twitter_username,
+      github_username: user_data.login,
       repos: repos_data
         .filter(function is_not_a_fork(repo) {
           return !repo.fork;
