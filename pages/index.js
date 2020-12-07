@@ -1,5 +1,9 @@
 import Head from "next/head";
-import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import {
+  faGithub,
+  faTwitter,
+  faLinkedin
+} from "@fortawesome/free-brands-svg-icons";
 
 import SocialLink from "./library/SocialLink";
 import Header from "./library/Header";
@@ -27,6 +31,11 @@ export default function Home({
       <main>
         <Header avatar={{ src: avatar, alt: "my github avatar" }}>
           <SocialLink link={url} icon={faGithub} username={github_username} />
+          <SocialLink
+            link={`https://linkedin.com/in/medayz`}
+            icon={faLinkedin}
+            username="medayz"
+          />
           <SocialLink
             link={`https://twitter.com/${twitter_username}`}
             icon={faTwitter}
