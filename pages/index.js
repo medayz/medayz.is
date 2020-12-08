@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import {
   faGithub,
   faTwitter,
@@ -13,9 +14,12 @@ import Container from "./library/Container";
 import Bio from "./components/Bio";
 import RepoCard from "./components/RepoCard";
 import ReposGrid from "./components/ReposGrid";
+import TechsGrid from "./components/TechsGrid";
+import TechItem from "./components/TechItem";
 
 export default function Home({
   avatar,
+  blog,
   url,
   twitter_username,
   github_username,
@@ -30,6 +34,12 @@ export default function Home({
 
       <main>
         <Header avatar={{ src: avatar, alt: "my github avatar" }}>
+          <SocialLink
+            link={blog}
+            text="Blog:"
+            image={"/hashnode.svg"}
+            username="medayz"
+          />
           <SocialLink link={url} icon={faGithub} username={github_username} />
           <SocialLink
             link={`https://linkedin.com/in/medayz`}
@@ -44,6 +54,16 @@ export default function Home({
         </Header>
 
         <Bio />
+
+        <Section title="Favorite Tech Stack:">
+          <TechsGrid>
+            {[{ name: "JavaScript" }].map((tech) => (
+              <TechItem name={tech.name}>
+                <Image src="/js.png" alt="JS logo" layout="fill" />
+              </TechItem>
+            ))}
+          </TechsGrid>
+        </Section>
 
         <Section title="Public repositories:">
           <ReposGrid>
@@ -75,6 +95,7 @@ export async function getStaticProps() {
 
   return {
     props: {
+      blog: user_data.blog,
       url: user_data.html_url,
       avatar: user_data.avatar_url,
       twitter_username: user_data.twitter_username,
