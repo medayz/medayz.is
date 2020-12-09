@@ -17,6 +17,8 @@ import ReposGrid from "./components/ReposGrid";
 import TechsGrid from "./components/TechsGrid";
 import TechItem from "./components/TechItem";
 
+import { getTechs } from "./api";
+
 export default function Home({
   avatar,
   blog,
@@ -55,11 +57,11 @@ export default function Home({
 
         <Bio />
 
-        <Section title="Favorite Tech Stack:">
+        <Section title="Favorite Technologies:">
           <TechsGrid>
-            {[{ name: "JavaScript" }].map((tech) => (
-              <TechItem name={tech.name}>
-                <Image src="/js.png" alt="JS logo" layout="fill" />
+            {[{ name: "JavaScript", logo: "/js.png" }].map(({ name, logo }) => (
+              <TechItem name={name}>
+                <Image src={logo} alt="JS logo" layout="fill" />
               </TechItem>
             ))}
           </TechsGrid>
@@ -82,7 +84,7 @@ export default function Home({
 export async function getStaticProps() {
   const headers = {
     headers: {
-      Authorization: `token ${process.env.GITHUB_ACCESS_TOKEN}`
+      Authorization: `token ${process.env.GITHUB_API_TOKEN}`
     }
   };
   const user = await fetch("https://api.github.com/user", headers);
@@ -92,7 +94,17 @@ export async function getStaticProps() {
   );
   const user_data = await user.json();
   const repos_data = await repos.json();
+  const techs = await getTechs([
+    "javascript",
+    "react",
+    "expressjs",
+    "neo4j",
+    "tailwindcss",
+    "rxjs",
+    "next.js"
+  ]);
 
+  console.log(techs);
   return {
     props: {
       blog: user_data.blog,
