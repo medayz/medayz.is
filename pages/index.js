@@ -95,13 +95,12 @@ export async function getStaticProps() {
   const user_data = await user.json();
   const repos_data = await repos.json();
   const techs = await getTechs([
-    "javascript",
-    "react",
-    "expressjs",
-    "neo4j",
-    "tailwindcss",
-    "rxjs",
-    "next.js"
+    "reactjs.org",
+    "expressjs.com",
+    "neo4j.com",
+    "tailwindcss.com",
+    "rxjs.dev",
+    "nextjs.org"
   ]);
 
   console.log(techs);
