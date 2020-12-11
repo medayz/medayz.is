@@ -18,25 +18,13 @@ export default function Bio() {
         as my username!
       </p>
       <p className="mb-8">
-        I spend my time either creating bugs or fixing them
+        I spend my time either creating bugs or fixing them 🐛
       </p>
       <div className="flex flex-row sm:items-center mb-4">
         <div className="flex sm:items-center flex-shrink-0">
           <Image
             src="/js.png"
             alt="JS logo"
-            width={21}
-            height={21}
-            layout="fixed"
-          />
-        </div>
-        <p className="ml-2">I'm a fullstack JS developer</p>
-      </div>
-      <div className="flex flex-row sm:items-center mb-2">
-        <div className="flex sm:items-center flex-shrink-0">
-          <Image
-            src="/react.png"
-            alt="React logo"
             width={21}
             height={21}
             layout="fixed"

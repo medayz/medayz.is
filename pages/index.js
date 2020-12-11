@@ -25,6 +25,7 @@ export default function Home({
   url,
   twitter_username,
   github_username,
+  techs,
   repos
 }) {
   return (
@@ -57,11 +58,17 @@ export default function Home({
 
         <Bio />
 
-        <Section title="Favorite Technologies:">
+        <Section title="Technologies I prefer or use the most:">
           <TechsGrid>
-            {[{ name: "JavaScript", logo: "/js.png" }].map(({ name, logo }) => (
+            {[
+              {
+                name: "JavaScript",
+                logo: "/js.png"
+              },
+              ...techs
+            ].map(({ name, logo }) => (
               <TechItem name={name}>
-                <Image src={logo} alt="JS logo" layout="fill" />
+                <img className="rounded-md" src={logo} alt={`${name} logo`} />
               </TechItem>
             ))}
           </TechsGrid>
@@ -94,16 +101,49 @@ export async function getStaticProps() {
   );
   const user_data = await user.json();
   const repos_data = await repos.json();
-  const techs = await getTechs([
-    "reactjs.org",
-    "expressjs.com",
-    "neo4j.com",
-    "tailwindcss.com",
-    "rxjs.dev",
-    "nextjs.org"
+  const techs_data = await getTechs([
+    {
+      name: "React.js",
+      query: "react",
+      url: "https://reactjs.org"
+    },
+    {
+      name: "Next.js",
+      query: "next.js",
+      url: "https://nextjs.org"
+    },
+    {
+      name: "NodeJS",
+      query: "nodejs",
+      url: "https://nodejs.org"
+    },
+    {
+      name: "Express.js",
+      query: "expressjs",
+      url: "https://expressjs.com"
+    },
+    {
+      name: "RxJS",
+      query: "rxjs",
+      url: "https://rxjs.dev"
+    },
+    {
+      name: "Neo4j",
+      query: "neo4j",
+      url: "https://neo4j.com"
+    },
+    {
+      name: "Tailwind CSS",
+      query: "tailwindcss",
+      url: "https://tailwindcss.com"
+    },
+    {
+      name: "styled components",
+      query: "styled-components",
+      url: "https://www.styled-components.com"
+    }
   ]);
 
-  console.log(techs);
   return {
     props: {
       blog: user_data.blog,
@@ -111,6 +151,7 @@ export async function getStaticProps() {
       avatar: user_data.avatar_url,
       twitter_username: user_data.twitter_username,
       github_username: user_data.login,
+      techs: techs_data,
       repos: repos_data
         .filter(function is_not_a_fork(repo) {
           return !repo.fork;
