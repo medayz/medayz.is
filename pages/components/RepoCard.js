@@ -38,7 +38,7 @@ function RepoTitle({ logo, title, url }) {
         ) : (
           <FontAwesomeIcon icon={faGithub} />
         )}
-        <span className="font-medium text-md ml-2">{title}</span>
+        <span className="font-medium text-sm ml-2">{title}</span>
       </div>
       <a href={url} target="_blank">
         <FontAwesomeIcon icon={faExternalLinkAlt} size="sm" />

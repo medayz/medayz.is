@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import {
   faGithub,
   faTwitter,
@@ -25,7 +24,10 @@ export default function Home({
   url,
   twitter_username,
   github_username,
-  techs,
+  frontend_techs,
+  backend_techs,
+  other_techs,
+  databases,
   repos
 }) {
   return (
@@ -58,28 +60,60 @@ export default function Home({
 
         <Bio />
 
-        <Section title="Technologies I prefer or use the most:">
-          <TechsGrid>
-            {[
-              {
-                name: "JavaScript",
-                logo: "/js.png"
-              },
-              ...techs
-            ].map(({ name, logo }) => (
-              <TechItem name={name}>
-                <img className="rounded-md" src={logo} alt={`${name} logo`} />
-              </TechItem>
-            ))}
-          </TechsGrid>
-        </Section>
-
         <Section title="Public repositories:">
           <ReposGrid>
             {repos.map(({ id, ...props }) => (
               <RepoCard key={id} {...props} />
             ))}
           </ReposGrid>
+        </Section>
+
+        <Section title="Frontend Technologies:">
+          <TechsGrid>
+            {frontend_techs.map(({ name, logo, domain }) => (
+              <a href={domain} target="_blank">
+                <TechItem name={name}>
+                  <img className="rounded-md" src={logo} alt={`${name} logo`} />
+                </TechItem>
+              </a>
+            ))}
+          </TechsGrid>
+        </Section>
+
+        <Section title="Backend Technologies:">
+          <TechsGrid>
+            {backend_techs.map(({ name, logo, domain }) => (
+              <a href={domain} target="_blank">
+                <TechItem name={name}>
+                  <img className="rounded-md" src={logo} alt={`${name} logo`} />
+                </TechItem>
+              </a>
+            ))}
+          </TechsGrid>
+        </Section>
+
+        <Section title="Databases:">
+          <TechsGrid>
+            {databases.map(({ name, logo, domain }) => (
+              <a href={domain} target="_blank">
+                <TechItem name={name}>
+                  <img className="rounded-md" src={logo} alt={`${name} logo`} />
+                </TechItem>
+              </a>
+            ))}
+          </TechsGrid>
+        </Section>
+
+        <Section title="Other technologies:">
+          <TechsGrid>
+            {other_techs.map(({ name, logo, domain }) => (
+              <a href={domain} target="_blank">
+                <TechItem name={name}>
+                  <img className="rounded-md" src={logo} alt={`${name} logo`} />
+                </TechItem>
+              </a>
+            ))}
+          </TechsGrid>
         </Section>
       </main>
 
@@ -101,17 +135,7 @@ export async function getStaticProps() {
   );
   const user_data = await user.json();
   const repos_data = await repos.json();
-  const techs_data = await getTechs([
-    {
-      name: "React.js",
-      query: "react",
-      url: "https://reactjs.org"
-    },
-    {
-      name: "Next.js",
-      query: "next.js",
-      url: "https://nextjs.org"
-    },
+  const backend_techs = await getTechs([
     {
       name: "NodeJS",
       query: "nodejs",
@@ -121,16 +145,18 @@ export async function getStaticProps() {
       name: "Express.js",
       query: "expressjs",
       url: "https://expressjs.com"
+    }
+  ]);
+  const frontend_techs = await getTechs([
+    {
+      name: "React.js",
+      query: "react",
+      url: "https://reactjs.org"
     },
     {
-      name: "RxJS",
-      query: "rxjs",
-      url: "https://rxjs.dev"
-    },
-    {
-      name: "Neo4j",
-      query: "neo4j",
-      url: "https://neo4j.com"
+      name: "Next.js",
+      query: "next.js",
+      url: "https://nextjs.org"
     },
     {
       name: "Tailwind CSS",
@@ -143,6 +169,26 @@ export async function getStaticProps() {
       url: "https://www.styled-components.com"
     }
   ]);
+  const databases = await getTechs([
+    {
+      name: "Neo4j",
+      query: "neo4j",
+      url: "https://neo4j.com"
+    },
+    {
+      name: "MySQL",
+      query: "mysql",
+      url: "https://mysql.com"
+    },
+    {
+      name: "MongoDB",
+      query: "mongodb",
+      url: "https://mongodb.com"
+    }
+  ]);
+  const other_techs = await getTechs([
+    { name: "Docker", query: "docker", url: "https://docker.com" }
+  ]);
 
   return {
     props: {
@@ -151,7 +197,10 @@ export async function getStaticProps() {
       avatar: user_data.avatar_url,
       twitter_username: user_data.twitter_username,
       github_username: user_data.login,
-      techs: techs_data,
+      frontend_techs: frontend_techs,
+      backend_techs: backend_techs,
+      databases: databases,
+      other_techs: other_techs,
       repos: repos_data
         .filter(function is_not_a_fork(repo) {
           return !repo.fork;

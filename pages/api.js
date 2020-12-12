@@ -72,6 +72,7 @@ async function getFormatedTechObject({ name: techName, url: techUrl, query }) {
     fetchTechStackshare(query)
   ]);
 
+  console.log(clearbitObj);
   return {
     name: techName,
     logo: clearbitObj.logo || stackshareObj.imageUrl || "",
