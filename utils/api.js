@@ -67,12 +67,11 @@ async function getFormatedTechObject({ name: techName, url: techUrl, query }) {
     clearbitObj = {},
     stackshareObj = {}
   ] = await Promise.all([
-    fetchMetaScraper(techUrl),
-    fetchTechClearbit(techUrl),
+    techUrl && fetchMetaScraper(techUrl),
+    techUrl && fetchTechClearbit(techUrl),
     fetchTechStackshare(query)
   ]);
 
-  console.log(clearbitObj);
   return {
     name: techName,
     logo: clearbitObj.logo || stackshareObj.imageUrl || "",

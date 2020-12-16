@@ -1,0 +1,68 @@
+{
+  "backend": [
+    {
+      "name": "NodeJS",
+      "query": "nodejs",
+      "url": "https://nodejs.org"
+    },
+    {
+      "name": "Express.js",
+      "query": "expressjs",
+      "url": "https://expressjs.com"
+    }
+  ],
+  "frontend": [
+    {
+      "name": "JavaScript",
+      "query": "javascript"
+    },
+    {
+      "name": "React.js",
+      "query": "react",
+      "url": "https://reactjs.org"
+    },
+    {
+      "name": "Next.js",
+      "query": "next.js",
+      "url": "https://nextjs.org"
+    },
+    {
+      "name": "Tailwind CSS",
+      "query": "tailwindcss",
+      "url": "https://tailwindcss.com"
+    },
+    {
+      "name": "styled components",
+      "query": "styled-components",
+      "url": "https://www.styled-components.com"
+    }
+  ],
+  "databases": [
+    {
+      "name": "Neo4j",
+      "query": "neo4j",
+      "url": "https://neo4j.com"
+    },
+    {
+      "name": "MySQL",
+      "query": "mysql",
+      "url": "https://mysql.com"
+    },
+    {
+      "name": "MongoDB",
+      "query": "mongodb",
+      "url": "https://mongodb.com"
+    }
+  ],
+  "other": [
+    {
+      "name": "Docker",
+      "query": "docker",
+      "url": "https://docker.com"
+    },
+    {
+      "name": "Git",
+      "query": "git"
+    }
+  ]
+}

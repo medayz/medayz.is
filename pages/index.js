@@ -5,18 +5,19 @@ import {
   faLinkedin
 } from "@fortawesome/free-brands-svg-icons";
 
-import SocialLink from "./library/SocialLink";
-import Header from "./library/Header";
-import Section from "./library/Section";
-import Container from "./library/Container";
+import SocialLink from "../library/SocialLink";
+import Header from "../library/Header";
+import Section from "../library/Section";
+import Container from "../library/Container";
 
-import Bio from "./components/Bio";
-import RepoCard from "./components/RepoCard";
-import ReposGrid from "./components/ReposGrid";
-import TechsGrid from "./components/TechsGrid";
-import TechItem from "./components/TechItem";
+import Bio from "../components/Bio";
+import RepoCard from "../components/RepoCard";
+import ReposGrid from "../components/ReposGrid";
+import TechsGrid from "../components/TechsGrid";
+import TechItem from "../components/TechItem";
 
-import { getTechs } from "./api";
+import { getTechs } from "../utils/api";
+import techStack from "../utils/techstack.json";
 
 export default function Home({
   avatar,
@@ -39,23 +40,27 @@ export default function Home({
 
       <main>
         <Header avatar={{ src: avatar, alt: "my github avatar" }}>
-          <SocialLink
-            link={blog}
-            text="Blog:"
-            image={"/hashnode.svg"}
-            username="medayz"
-          />
-          <SocialLink link={url} icon={faGithub} username={github_username} />
-          <SocialLink
-            link={`https://linkedin.com/in/medayz`}
-            icon={faLinkedin}
-            username="medayz"
-          />
-          <SocialLink
-            link={`https://twitter.com/${twitter_username}`}
-            icon={faTwitter}
-            username={`@${twitter_username}`}
-          />
+          {[
+            {
+              link: blog,
+              text: "Blog:",
+              image: "/hashnode.svg",
+              username: "medayz"
+            },
+            { link: url, icon: faGithub, username: github_username },
+            {
+              link: "https://linkedin.com/in/medayz",
+              icon: faLinkedin,
+              username: "medayz"
+            },
+            {
+              link: `https://twitter.com/${twitter_username}`,
+              icon: faTwitter,
+              username: `@${twitter_username}`
+            }
+          ].map(({ ...props }, index) => (
+            <SocialLink key={index} {...props} />
+          ))}
         </Header>
 
         <Bio />
@@ -70,8 +75,8 @@ export default function Home({
 
         <Section title="Frontend Technologies:">
           <TechsGrid>
-            {frontend_techs.map(({ name, logo, domain }) => (
-              <a href={domain} target="_blank">
+            {frontend_techs.map(({ name, logo, domain }, index) => (
+              <a key={index} href={domain} target="_blank">
                 <TechItem name={name}>
                   <img className="rounded-md" src={logo} alt={`${name} logo`} />
                 </TechItem>
@@ -82,8 +87,8 @@ export default function Home({
 
         <Section title="Backend Technologies:">
           <TechsGrid>
-            {backend_techs.map(({ name, logo, domain }) => (
-              <a href={domain} target="_blank">
+            {backend_techs.map(({ name, logo, domain }, index) => (
+              <a key={index} href={domain} target="_blank">
                 <TechItem name={name}>
                   <img className="rounded-md" src={logo} alt={`${name} logo`} />
                 </TechItem>
@@ -94,8 +99,8 @@ export default function Home({
 
         <Section title="Databases:">
           <TechsGrid>
-            {databases.map(({ name, logo, domain }) => (
-              <a href={domain} target="_blank">
+            {databases.map(({ name, logo, domain }, index) => (
+              <a key={index} href={domain} target="_blank">
                 <TechItem name={name}>
                   <img className="rounded-md" src={logo} alt={`${name} logo`} />
                 </TechItem>
@@ -106,8 +111,8 @@ export default function Home({
 
         <Section title="Other technologies:">
           <TechsGrid>
-            {other_techs.map(({ name, logo, domain }) => (
-              <a href={domain} target="_blank">
+            {other_techs.map(({ name, logo, domain }, index) => (
+              <a key={index} href={domain} target="_blank">
                 <TechItem name={name}>
                   <img className="rounded-md" src={logo} alt={`${name} logo`} />
                 </TechItem>
@@ -135,60 +140,10 @@ export async function getStaticProps() {
   );
   const user_data = await user.json();
   const repos_data = await repos.json();
-  const backend_techs = await getTechs([
-    {
-      name: "NodeJS",
-      query: "nodejs",
-      url: "https://nodejs.org"
-    },
-    {
-      name: "Express.js",
-      query: "expressjs",
-      url: "https://expressjs.com"
-    }
-  ]);
-  const frontend_techs = await getTechs([
-    {
-      name: "React.js",
-      query: "react",
-      url: "https://reactjs.org"
-    },
-    {
-      name: "Next.js",
-      query: "next.js",
-      url: "https://nextjs.org"
-    },
-    {
-      name: "Tailwind CSS",
-      query: "tailwindcss",
-      url: "https://tailwindcss.com"
-    },
-    {
-      name: "styled components",
-      query: "styled-components",
-      url: "https://www.styled-components.com"
-    }
-  ]);
-  const databases = await getTechs([
-    {
-      name: "Neo4j",
-      query: "neo4j",
-      url: "https://neo4j.com"
-    },
-    {
-      name: "MySQL",
-      query: "mysql",
-      url: "https://mysql.com"
-    },
-    {
-      name: "MongoDB",
-      query: "mongodb",
-      url: "https://mongodb.com"
-    }
-  ]);
-  const other_techs = await getTechs([
-    { name: "Docker", query: "docker", url: "https://docker.com" }
-  ]);
+  const backend_techs = await getTechs(techStack.backend);
+  const frontend_techs = await getTechs(techStack.frontend);
+  const databases = await getTechs(techStack.databases);
+  const other_techs = await getTechs(techStack.other);
 
   return {
     props: {
