@@ -1,12 +1,12 @@
-const metascraper = require("metascraper")([
-  require("metascraper-description")(),
-  require("metascraper-image")(),
-  require("metascraper-logo")(),
-  require("metascraper-clearbit")(),
-  require("metascraper-title")(),
-  require("metascraper-url")()
-]);
-const got = require("got");
+// const metascraper = require("metascraper")([
+//   require("metascraper-description")(),
+//   require("metascraper-image")(),
+//   require("metascraper-logo")(),
+//   require("metascraper-clearbit")(),
+//   require("metascraper-title")(),
+//   require("metascraper-url")()
+// ]);
+// const got = require("got");
 
 import { Client } from "clearbit";
 var clearbit = new Client({ key: process.env.CLEARBIT_API_TOKEN });
@@ -55,28 +55,29 @@ async function fetchTechClearbit(domain) {
   };
 }
 
-async function fetchMetaScraper(targetUrl) {
-  const { body: html, url } = await got(targetUrl);
+// async function fetchMetaScraper(targetUrl) {
+//   const { body: html, url } = await got(targetUrl);
 
-  return await metascraper({ html, url });
-}
+//   return await metascraper({ html, url });
+// }
 
 async function getFormatedTechObject({ name: techName, url: techUrl, query }) {
   const [
-    metascraperObj = {},
+    // metascraperObj = {},
     clearbitObj = {},
     stackshareObj = {}
   ] = await Promise.all([
-    techUrl && fetchMetaScraper(techUrl),
     techUrl && fetchTechClearbit(techUrl),
     fetchTechStackshare(query)
   ]);
+  // techUrl && fetchMetaScraper(techUrl),
 
   return {
     name: techName,
     logo: clearbitObj.logo || stackshareObj.imageUrl || "",
     domain: stackshareObj.websiteUrl || techUrl,
-    title: metascraperObj.title || techName
+    title: techName
+    // title: metascraperObj.title || techName
   };
 }
 
