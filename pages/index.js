@@ -17,7 +17,7 @@ import TechsGrid from "../components/TechsGrid";
 import TechItem from "../components/TechItem";
 
 import { getTechs } from "../utils/api";
-import techStack from "../utils/techstack.json";
+import techStack from "../data/techstack.json";
 
 export default function Home({
   avatar,
@@ -122,7 +122,7 @@ export default function Home({
         </Section>
       </main>
 
-      <footer>2020</footer>
+      <footer>{new Date().getFullYear()}</footer>
     </Container>
   );
 }

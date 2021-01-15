@@ -28,13 +28,26 @@
     },
     {
       "name": "Tailwind CSS",
-      "query": "tailwindcss",
+      "query": "tailwind-css",
       "url": "https://tailwindcss.com"
     },
     {
       "name": "styled components",
       "query": "styled-components",
       "url": "https://www.styled-components.com"
+    },
+    {
+      "name": "Redux",
+      "query": "redux"
+    },
+    {
+      "name": "RxJS",
+      "query": "rxjs",
+      "url": "https://rxjs.dev"
+    },
+    {
+      "name": "XState",
+      "query": "xstate"
     }
   ],
   "databases": [
