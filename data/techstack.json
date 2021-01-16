@@ -41,13 +41,31 @@
       "query": "redux"
     },
     {
+      "name": "React Query",
+      "query": "react query",
+      "url": "https://react-query.tanstack.com",
+      "logo": "/react-query.svg"
+    },
+    {
       "name": "RxJS",
       "query": "rxjs",
       "url": "https://rxjs.dev"
     },
     {
       "name": "XState",
-      "query": "xstate"
+      "query": "xstate",
+      "logo": "/xstate.svg"
+    },
+    {
+      "name": "Jest",
+      "query": "jest",
+      "url": "https://jestjs.io",
+      "logo": "/jest.png"
+    },
+    {
+      "name": "RTL",
+      "query": "react-testing-library",
+      "url": "https://testing-library.com/"
     }
   ],
   "databases": [

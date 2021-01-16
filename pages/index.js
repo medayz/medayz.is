@@ -122,7 +122,7 @@ export default function Home({
         </Section>
       </main>
 
-      <footer>{new Date().getFullYear()}</footer>
+      <footer className="text-center">{new Date().getFullYear()}</footer>
     </Container>
   );
 }
