@@ -3,97 +3,151 @@
     {
       "name": "NodeJS",
       "query": "nodejs",
-      "url": "https://nodejs.org"
+      "url": "https://nodejs.org",
+      "description": "Javascript runtime",
+      "familiarity": 3,
+      "tags": ["runtime"]
     },
     {
       "name": "Express.js",
       "query": "expressjs",
-      "url": "https://expressjs.com"
+      "url": "https://expressjs.com",
+      "description": "Node.js web app framework",
+      "familiarity": 4,
+      "tags": ["node", "framework"]
     }
   ],
   "frontend": [
     {
       "name": "JavaScript",
-      "query": "javascript"
+      "query": "javascript",
+      "description": "The web programming language",
+      "familiarity": 5,
+      "tags": ["language"]
     },
     {
       "name": "React.js",
       "query": "react",
-      "url": "https://reactjs.org"
+      "url": "https://reactjs.org",
+      "description": "Javascript library for building UIs",
+      "familiarity": 5,
+      "tags": ["library"]
     },
     {
       "name": "Next.js",
       "query": "next.js",
-      "url": "https://nextjs.org"
+      "url": "https://nextjs.org",
+      "description": "React Framework",
+      "familiarity": 4,
+      "tags": ["react", "framework"]
     },
     {
       "name": "Tailwind CSS",
       "query": "tailwind-css",
-      "url": "https://tailwindcss.com"
+      "url": "https://tailwindcss.com",
+      "description": "A utility-first CSS framework",
+      "familiarity": 3,
+      "tags": ["styling"]
     },
     {
-      "name": "styled components",
+      "name": "Styled components",
       "query": "styled-components",
-      "url": "https://www.styled-components.com"
+      "url": "https://www.styled-components.com",
+      "description": "CSS in JS library",
+      "familiarity": 4,
+      "tags": ["styling"]
     },
     {
       "name": "Redux",
-      "query": "redux"
+      "query": "redux",
+      "description": "Javascript state management library",
+      "familiarity": 3,
+      "tags": ["state"]
     },
     {
       "name": "React Query",
       "query": "react query",
       "url": "https://react-query.tanstack.com",
-      "logo": "/react-query.svg"
+      "logo": "/react-query.svg",
+      "description": "React data fetching and caching library",
+      "familiarity": 2,
+      "tags": ["caching", "fetching"]
     },
     {
       "name": "RxJS",
       "query": "rxjs",
-      "url": "https://rxjs.dev"
+      "url": "https://rxjs.dev",
+      "description": "Javascript functional reactive programming library",
+      "familiarity": 2,
+      "tags": ["observables", "async"]
     },
     {
       "name": "XState",
       "query": "xstate",
-      "logo": "/xstate.svg"
+      "logo": "/xstate.svg",
+      "description": "Javascript state machines and statecharts",
+      "familiarity": 2,
+      "tags": ["state machines"]
     },
     {
       "name": "Jest",
       "query": "jest",
       "url": "https://jestjs.io",
-      "logo": "/jest.png"
+      "logo": "/jest.png",
+      "description": "Javascript testing library",
+      "familiarity": 1,
+      "tags": ["testing"]
     },
     {
-      "name": "RTL",
+      "name": "React Testing Library",
       "query": "react-testing-library",
-      "url": "https://testing-library.com/"
+      "url": "https://testing-library.com/",
+      "description": "React UI testing library",
+      "familiarity": 1,
+      "tags": ["react", "testing"]
     }
   ],
   "databases": [
     {
       "name": "Neo4j",
       "query": "neo4j",
-      "url": "https://neo4j.com"
+      "url": "https://neo4j.com",
+      "description": "Graph Database",
+      "familiarity": 3,
+      "tags": ["graphs"]
     },
     {
       "name": "MySQL",
       "query": "mysql",
-      "url": "https://mysql.com"
+      "url": "https://mysql.com",
+      "description": "Relational Database",
+      "familiarity": 4,
+      "tags": ["relational"]
     },
     {
       "name": "MongoDB",
       "query": "mongodb",
-      "url": "https://mongodb.com"
+      "url": "https://mongodb.com",
+      "description": "NoSQL Database",
+      "familiarity": 2,
+      "tags": ["NoSQL"]
     }
   ],
   "other": [
     {
       "name": "Docker",
       "query": "docker",
-      "url": "https://docker.com"
+      "url": "https://docker.com",
+      "description": "PAAS for containers",
+      "familiarity": 2,
+      "tags": ["containers"]
     },
     {
       "name": "Git",
-      "query": "git"
+      "query": "git",
+      "description": "Version control system",
+      "familiarity": 2,
+      "tags": ["VCS"]
     }
   ]
 }

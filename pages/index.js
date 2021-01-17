@@ -9,6 +9,7 @@ import SocialLink from "../library/SocialLink";
 import Header from "../library/Header";
 import Section from "../library/Section";
 import Container from "../library/Container";
+import Stars from "../library/Stars"
 
 import Bio from "../components/Bio";
 import RepoCard from "../components/RepoCard";
@@ -18,6 +19,7 @@ import TechItem from "../components/TechItem";
 
 import { getTechs } from "../utils/api";
 import techStack from "../data/techstack.json";
+import TechItemLogo from "../components/TechItemLogo";
 
 export default function Home({
   avatar,
@@ -75,10 +77,11 @@ export default function Home({
 
         <Section title="Frontend Technologies:">
           <TechsGrid>
-            {frontend_techs.map(({ name, logo, domain }, index) => (
+            {frontend_techs.map(({ name, logo, domain, description, familiarity=0, tags=[] }, index) => (
               <a key={index} href={domain} target="_blank">
-                <TechItem name={name}>
-                  <img className="rounded-md" src={logo} alt={`${name} logo`} />
+                <TechItem name={name} description={description} tags={tags}>
+                  <TechItemLogo name={name} logo={logo} />
+                  <Stars stars={familiarity} />
                 </TechItem>
               </a>
             ))}
@@ -87,10 +90,11 @@ export default function Home({
 
         <Section title="Backend Technologies:">
           <TechsGrid>
-            {backend_techs.map(({ name, logo, domain }, index) => (
+            {backend_techs.map(({ name, logo, domain, description, familiarity=0, tags=[] }, index) => (
               <a key={index} href={domain} target="_blank">
-                <TechItem name={name}>
-                  <img className="rounded-md" src={logo} alt={`${name} logo`} />
+                <TechItem name={name} description={description} tags={tags}>
+                  <TechItemLogo name={name} logo={logo} />
+                  <Stars stars={familiarity} />
                 </TechItem>
               </a>
             ))}
@@ -99,10 +103,11 @@ export default function Home({
 
         <Section title="Databases:">
           <TechsGrid>
-            {databases.map(({ name, logo, domain }, index) => (
+            {databases.map(({ name, logo, domain, description, familiarity=0, tags=[] }, index) => (
               <a key={index} href={domain} target="_blank">
-                <TechItem name={name}>
-                  <img className="rounded-md" src={logo} alt={`${name} logo`} />
+                <TechItem name={name} description={description} tags={tags}>
+                  <TechItemLogo name={name} logo={logo} />
+                  <Stars stars={familiarity} />
                 </TechItem>
               </a>
             ))}
@@ -111,10 +116,11 @@ export default function Home({
 
         <Section title="Other technologies:">
           <TechsGrid>
-            {other_techs.map(({ name, logo, domain }, index) => (
+            {other_techs.map(({ name, logo, domain, description, familiarity=0, tags=[] }, index) => (
               <a key={index} href={domain} target="_blank">
-                <TechItem name={name}>
-                  <img className="rounded-md" src={logo} alt={`${name} logo`} />
+                <TechItem name={name} description={description} tags={tags}>
+                  <TechItemLogo name={name} logo={logo} />
+                  <Stars stars={familiarity} />
                 </TechItem>
               </a>
             ))}

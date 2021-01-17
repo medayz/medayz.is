@@ -61,7 +61,15 @@ async function fetchTechClearbit(domain) {
 //   return await metascraper({ html, url });
 // }
 
-async function getFormatedTechObject({ name: techName, url: techUrl = "", query, logo = "" }) {
+async function getFormatedTechObject({
+  name: techName,
+  url: techUrl = "",
+  query,
+  logo = "",
+  description = "",
+  familiarity = 0,
+  tags = []
+}) {
   const [
     // metascraperObj = {},
     clearbitObj = {},
@@ -76,7 +84,10 @@ async function getFormatedTechObject({ name: techName, url: techUrl = "", query,
     name: techName,
     logo: logo || clearbitObj.logo || stackshareObj.imageUrl || "",
     domain: stackshareObj.websiteUrl || techUrl,
-    title: techName
+    title: techName,
+    description,
+    familiarity,
+    tags
     // title: metascraperObj.title || techName
   };
 }
