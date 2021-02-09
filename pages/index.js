@@ -9,7 +9,7 @@ import SocialLink from "../library/SocialLink";
 import Header from "../library/Header";
 import Section from "../library/Section";
 import Container from "../library/Container";
-import Stars from "../library/Stars"
+import Stars from "../library/Stars";
 
 import Bio from "../components/Bio";
 import RepoCard from "../components/RepoCard";
@@ -38,6 +38,7 @@ export default function Home({
       <Head>
         <title>medayz</title>
         {/* <link rel="icon" href="/favicon.ico" /> */}
+        <script async data-api="/_hive" src="/bee.js"></script>
       </Head>
 
       <main>
@@ -77,53 +78,73 @@ export default function Home({
 
         <Section title="Frontend Technologies:">
           <TechsGrid>
-            {frontend_techs.map(({ name, logo, domain, description, familiarity=0, tags=[] }, index) => (
-              <a key={index} href={domain} target="_blank">
-                <TechItem name={name} description={description} tags={tags}>
-                  <TechItemLogo name={name} logo={logo} />
-                  <Stars stars={familiarity} />
-                </TechItem>
-              </a>
-            ))}
+            {frontend_techs.map(
+              (
+                { name, logo, domain, description, familiarity = 0, tags = [] },
+                index
+              ) => (
+                <a key={index} href={domain} target="_blank">
+                  <TechItem name={name} description={description} tags={tags}>
+                    <TechItemLogo name={name} logo={logo} />
+                    <Stars stars={familiarity} />
+                  </TechItem>
+                </a>
+              )
+            )}
           </TechsGrid>
         </Section>
 
         <Section title="Backend Technologies:">
           <TechsGrid>
-            {backend_techs.map(({ name, logo, domain, description, familiarity=0, tags=[] }, index) => (
-              <a key={index} href={domain} target="_blank">
-                <TechItem name={name} description={description} tags={tags}>
-                  <TechItemLogo name={name} logo={logo} />
-                  <Stars stars={familiarity} />
-                </TechItem>
-              </a>
-            ))}
+            {backend_techs.map(
+              (
+                { name, logo, domain, description, familiarity = 0, tags = [] },
+                index
+              ) => (
+                <a key={index} href={domain} target="_blank">
+                  <TechItem name={name} description={description} tags={tags}>
+                    <TechItemLogo name={name} logo={logo} />
+                    <Stars stars={familiarity} />
+                  </TechItem>
+                </a>
+              )
+            )}
           </TechsGrid>
         </Section>
 
         <Section title="Databases:">
           <TechsGrid>
-            {databases.map(({ name, logo, domain, description, familiarity=0, tags=[] }, index) => (
-              <a key={index} href={domain} target="_blank">
-                <TechItem name={name} description={description} tags={tags}>
-                  <TechItemLogo name={name} logo={logo} />
-                  <Stars stars={familiarity} />
-                </TechItem>
-              </a>
-            ))}
+            {databases.map(
+              (
+                { name, logo, domain, description, familiarity = 0, tags = [] },
+                index
+              ) => (
+                <a key={index} href={domain} target="_blank">
+                  <TechItem name={name} description={description} tags={tags}>
+                    <TechItemLogo name={name} logo={logo} />
+                    <Stars stars={familiarity} />
+                  </TechItem>
+                </a>
+              )
+            )}
           </TechsGrid>
         </Section>
 
         <Section title="Other technologies:">
           <TechsGrid>
-            {other_techs.map(({ name, logo, domain, description, familiarity=0, tags=[] }, index) => (
-              <a key={index} href={domain} target="_blank">
-                <TechItem name={name} description={description} tags={tags}>
-                  <TechItemLogo name={name} logo={logo} />
-                  <Stars stars={familiarity} />
-                </TechItem>
-              </a>
-            ))}
+            {other_techs.map(
+              (
+                { name, logo, domain, description, familiarity = 0, tags = [] },
+                index
+              ) => (
+                <a key={index} href={domain} target="_blank">
+                  <TechItem name={name} description={description} tags={tags}>
+                    <TechItemLogo name={name} logo={logo} />
+                    <Stars stars={familiarity} />
+                  </TechItem>
+                </a>
+              )
+            )}
           </TechsGrid>
         </Section>
       </main>
