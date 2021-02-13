@@ -1,8 +1,12 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  purge: [],
-  darkMode: "media", // or 'media' or 'class'
+  purge: [
+    './pages/**/*.js',
+    './components/**/*.js',
+    './library/**/*.js'
+  ],
+  darkMode: "media", // TODO: change to class'
   theme: {
     extend: {},
     container: {
