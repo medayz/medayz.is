@@ -24,3 +24,9 @@ export function getLangLogo(lang) {
 
   return "";
 }
+
+export function fetcher(headers) {
+  return function getJSON(url) {
+    return fetch(url, headers).then(data => data.json());
+  }
+}

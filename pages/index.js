@@ -7,19 +7,37 @@ import {
 
 import SocialLink from "../library/SocialLink";
 import Header from "../library/Header";
-import Section from "../library/Section";
 import Container from "../library/Container";
-import Stars from "../library/Stars";
 
 import Bio from "../components/Bio";
-import RepoCard from "../components/RepoCard";
-import ReposGrid from "../components/ReposGrid";
-import TechsGrid from "../components/TechsGrid";
-import TechItem from "../components/TechItem";
+import { PublicReposSection } from "../components/PublicReposSection";
+import { TechnologiesSection } from "../components/TechnologiesSection";
 
 import { getTechs } from "../utils/api";
+import { fetcher } from "../utils/helpers";
 import techStack from "../data/techstack.json";
-import TechItemLogo from "../components/TechItemLogo";
+
+function HomeHead() {
+  return (
+    <Head>
+      <title>medayz</title>
+      {/* <link rel="icon" href="/favicon.ico" /> */}
+      <script async data-api="/_hive" src="/bee.js"></script>
+    </Head>
+  );
+}
+
+function createSocialLinks(avatar, socialLinks) {
+  return function SocialLinks() {
+    return (
+      <Header avatar={{ src: avatar, alt: "my github avatar" }}>
+        {socialLinks.map(({ ...props }, index) => (
+          <SocialLink key={index} {...props} />
+        ))}
+      </Header>
+    );
+  };
+}
 
 export default function Home({
   avatar,
@@ -33,120 +51,44 @@ export default function Home({
   databases,
   repos
 }) {
+  const SocialLinks = createSocialLinks(avatar, [
+    {
+      link: blog,
+      text: "Blog:",
+      image: "/hashnode.svg",
+      username: "medayz"
+    },
+    { link: url, icon: faGithub, username: github_username },
+    {
+      link: "https://linkedin.com/in/medayz",
+      icon: faLinkedin,
+      username: "medayz"
+    },
+    {
+      link: `https://twitter.com/${twitter_username}`,
+      icon: faTwitter,
+      username: `@${twitter_username}`
+    }
+  ]);
+
   return (
     <Container>
-      <Head>
-        <title>medayz</title>
-        {/* <link rel="icon" href="/favicon.ico" /> */}
-        <script async data-api="/_hive" src="/bee.js"></script>
-      </Head>
+      <HomeHead />
 
       <main>
-        <Header avatar={{ src: avatar, alt: "my github avatar" }}>
-          {[
-            {
-              link: blog,
-              text: "Blog:",
-              image: "/hashnode.svg",
-              username: "medayz"
-            },
-            { link: url, icon: faGithub, username: github_username },
-            {
-              link: "https://linkedin.com/in/medayz",
-              icon: faLinkedin,
-              username: "medayz"
-            },
-            {
-              link: `https://twitter.com/${twitter_username}`,
-              icon: faTwitter,
-              username: `@${twitter_username}`
-            }
-          ].map(({ ...props }, index) => (
-            <SocialLink key={index} {...props} />
-          ))}
-        </Header>
-
+        <SocialLinks />
         <Bio />
-
-        <Section title="Public repositories:">
-          <ReposGrid>
-            {repos.map(({ id, ...props }) => (
-              <RepoCard key={id} {...props} />
-            ))}
-          </ReposGrid>
-        </Section>
-
-        <Section title="Frontend Technologies:">
-          <TechsGrid>
-            {frontend_techs.map(
-              (
-                { name, logo, domain, description, familiarity = 0, tags = [] },
-                index
-              ) => (
-                <a key={index} href={domain} target="_blank">
-                  <TechItem name={name} description={description} tags={tags}>
-                    <TechItemLogo name={name} logo={logo} />
-                    <Stars stars={familiarity} />
-                  </TechItem>
-                </a>
-              )
-            )}
-          </TechsGrid>
-        </Section>
-
-        <Section title="Backend Technologies:">
-          <TechsGrid>
-            {backend_techs.map(
-              (
-                { name, logo, domain, description, familiarity = 0, tags = [] },
-                index
-              ) => (
-                <a key={index} href={domain} target="_blank">
-                  <TechItem name={name} description={description} tags={tags}>
-                    <TechItemLogo name={name} logo={logo} />
-                    <Stars stars={familiarity} />
-                  </TechItem>
-                </a>
-              )
-            )}
-          </TechsGrid>
-        </Section>
-
-        <Section title="Databases:">
-          <TechsGrid>
-            {databases.map(
-              (
-                { name, logo, domain, description, familiarity = 0, tags = [] },
-                index
-              ) => (
-                <a key={index} href={domain} target="_blank">
-                  <TechItem name={name} description={description} tags={tags}>
-                    <TechItemLogo name={name} logo={logo} />
-                    <Stars stars={familiarity} />
-                  </TechItem>
-                </a>
-              )
-            )}
-          </TechsGrid>
-        </Section>
-
-        <Section title="Other technologies:">
-          <TechsGrid>
-            {other_techs.map(
-              (
-                { name, logo, domain, description, familiarity = 0, tags = [] },
-                index
-              ) => (
-                <a key={index} href={domain} target="_blank">
-                  <TechItem name={name} description={description} tags={tags}>
-                    <TechItemLogo name={name} logo={logo} />
-                    <Stars stars={familiarity} />
-                  </TechItem>
-                </a>
-              )
-            )}
-          </TechsGrid>
-        </Section>
+        <PublicReposSection repos={repos} />
+        <TechnologiesSection
+          title="Frontend Technologies:"
+          techs={frontend_techs}
+        />
+        <TechnologiesSection
+          title="Backend Technologies:"
+          techs={backend_techs}
+        />
+        <TechnologiesSection title="Databases:" techs={databases} />
+        <TechnologiesSection title="Other technologies:" techs={other_techs} />
       </main>
 
       <footer className="text-center">{new Date().getFullYear()}</footer>
@@ -155,18 +97,14 @@ export default function Home({
 }
 
 export async function getStaticProps() {
-  const headers = {
+  const getJSON = fetcher({
     headers: {
       Authorization: `token ${process.env.GITHUB_API_TOKEN}`
     }
-  };
-  const user = await fetch("https://api.github.com/user", headers);
-  const repos = await fetch(
-    "https://api.github.com/users/medayz/repos",
-    headers
-  );
-  const user_data = await user.json();
-  const repos_data = await repos.json();
+  });
+
+  const user_data = await getJSON("https://api.github.com/user");
+  const repos_data = await getJSON("https://api.github.com/users/medayz/repos");
   const backend_techs = await getTechs(techStack.backend);
   const frontend_techs = await getTechs(techStack.frontend);
   const databases = await getTechs(techStack.databases);
@@ -184,8 +122,11 @@ export async function getStaticProps() {
       databases: databases,
       other_techs: other_techs,
       repos: repos_data
-        .filter(function is_not_a_fork(repo) {
+        .filter(function isNotFork(repo) {
           return !repo.fork;
+        })
+        .filter(function isNotBio(repo) {
+          return repo.full_name !== "medayz/medayz";
         })
         .map((repo) => ({
           id: repo.id,

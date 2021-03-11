@@ -68,7 +68,7 @@
       "name": "React Query",
       "query": "react query",
       "url": "https://react-query.tanstack.com",
-      "logo": "/react-query.svg",
+      "logo": "/react-query.png",
       "description": "React data fetching and caching library",
       "familiarity": 2,
       "tags": ["caching", "fetching"]
@@ -84,7 +84,7 @@
     {
       "name": "XState",
       "query": "xstate",
-      "logo": "/xstate.svg",
+      "logo": "/xstate.png",
       "description": "Javascript state machines and statecharts",
       "familiarity": 2,
       "tags": ["state machines"]
