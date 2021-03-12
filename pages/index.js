@@ -27,18 +27,6 @@ function HomeHead() {
   );
 }
 
-function createSocialLinks(avatar, socialLinks) {
-  return function SocialLinks() {
-    return (
-      <Header avatar={{ src: avatar, alt: "my github avatar" }}>
-        {socialLinks.map(({ ...props }, index) => (
-          <SocialLink key={index} {...props} />
-        ))}
-      </Header>
-    );
-  };
-}
-
 export default function Home({
   avatar,
   blog,
@@ -51,7 +39,7 @@ export default function Home({
   databases,
   repos
 }) {
-  const SocialLinks = createSocialLinks(avatar, [
+  const socialLinks = [
     {
       link: blog,
       text: "Blog:",
@@ -69,14 +57,18 @@ export default function Home({
       icon: faTwitter,
       username: `@${twitter_username}`
     }
-  ]);
+  ];
 
   return (
     <Container>
       <HomeHead />
 
       <main>
-        <SocialLinks />
+        <Header avatar={{ src: avatar, alt: "my github avatar" }}>
+          {socialLinks.map(({ ...props }, index) => (
+            <SocialLink key={index} {...props} />
+          ))}
+        </Header>
         <Bio />
         <PublicReposSection repos={repos} />
         <TechnologiesSection
