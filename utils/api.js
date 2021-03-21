@@ -68,7 +68,8 @@ async function getFormatedTechObject({
   logo = "",
   description = "",
   familiarity = 0,
-  tags = []
+  tags = [],
+  type = ""
 }) {
   const [
     // metascraperObj = {},
@@ -87,7 +88,8 @@ async function getFormatedTechObject({
     title: techName,
     description,
     familiarity,
-    tags
+    tags,
+    type
     // title: metascraperObj.title || techName
   };
 }

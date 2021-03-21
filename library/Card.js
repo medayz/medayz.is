@@ -7,7 +7,7 @@ export function CardTitle({ children }) {
 }
 export function CardBody({ children }) {
   return (
-    <p className="font-extralight text-sm text-gray-400 dark:text-orange-50 px-3 py-2">
+    <p className="font-extralight text-sm dark:text-orange-50 px-3 py-2 flex-grow">
       {children}
     </p>
   );
@@ -19,7 +19,7 @@ export function CardActions({ children }) {
 export function Card({ children }) {
   return (
     <div className="max-w-xs border-solid border border-blue-100 rounded-lg dark:shadow-lg dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
-      <div className="h-full flex flex-col justify-between">{children}</div>
+      <div className="h-full flex flex-col">{children}</div>
     </div>
   );
 }

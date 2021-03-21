@@ -4,65 +4,73 @@
       "name": "NodeJS",
       "query": "nodejs",
       "url": "https://nodejs.org",
-      "description": "Javascript runtime",
+      "description": "JavaScript runtime",
       "familiarity": 3,
-      "tags": ["runtime"]
+      "tags": ["runtime"],
+      "type": "JavaScript runtime"
     },
     {
       "name": "Express.js",
       "query": "expressjs",
       "url": "https://expressjs.com",
-      "description": "Node.js web app framework",
+      "description": "Node.js minimalist web framework",
       "familiarity": 4,
-      "tags": ["node", "framework"]
+      "tags": ["node", "framework"],
+      "type": "Node.js framework"
     }
   ],
   "frontend": [
     {
       "name": "JavaScript",
       "query": "javascript",
-      "description": "The web programming language",
+      "description": "The language that browsers understand",
       "familiarity": 5,
-      "tags": ["language"]
+      "tags": ["language"],
+      "type": "Programming language"
     },
     {
       "name": "React.js",
       "query": "react",
       "url": "https://reactjs.org",
-      "description": "Javascript library for building UIs",
+      "description": "JavaScript library for building composable UIs",
       "familiarity": 5,
-      "tags": ["library"]
+      "tags": ["library"],
+      "type": "UI library"
     },
     {
       "name": "Next.js",
       "query": "next.js",
       "url": "https://nextjs.org",
-      "description": "React Framework",
+      "description": "React framework for building hybrid web applications",
       "familiarity": 4,
-      "tags": ["react", "framework"]
+      "tags": ["react", "framework"],
+      "type": "React Framework"
     },
     {
       "name": "Tailwind CSS",
       "query": "tailwind-css",
       "url": "https://tailwindcss.com",
-      "description": "A utility-first CSS framework",
+      "description": "A utility-first CSS framework for composing atomic utility classes",
       "familiarity": 3,
-      "tags": ["styling"]
+      "tags": ["styling"],
+      "type": "CSS framework"
     },
     {
       "name": "Styled components",
       "query": "styled-components",
       "url": "https://www.styled-components.com",
-      "description": "CSS in JS library",
+      "description": "CSS in JS library for styling React components",
       "familiarity": 4,
-      "tags": ["styling"]
+      "tags": ["styling"],
+      "type": "CSSinJS library"
     },
     {
       "name": "Redux",
       "query": "redux",
-      "description": "Javascript state management library",
+      "description": "Javascript state management library implementing the Flux architecture",
       "familiarity": 3,
-      "tags": ["state"]
+      "tags": ["state"],
+      "type": "State management library"
     },
     {
       "name": "React Query",
@@ -71,7 +79,8 @@
       "logo": "/react-query.png",
       "description": "React data fetching and caching library",
       "familiarity": 2,
-      "tags": ["caching", "fetching"]
+      "tags": ["caching", "fetching"],
+      "type": "Server state caching"
     },
     {
       "name": "RxJS",
@@ -79,32 +88,36 @@
       "url": "https://rxjs.dev",
       "description": "Javascript functional reactive programming library",
       "familiarity": 2,
-      "tags": ["observables", "async"]
+      "tags": ["observables", "async"],
+      "type": "FPR library"
     },
     {
       "name": "XState",
       "query": "xstate",
       "logo": "/xstate.png",
-      "description": "Javascript state machines and statecharts",
+      "description": "Javascript state machines and statecharts implementation for modern web applications",
       "familiarity": 2,
-      "tags": ["state machines"]
+      "tags": ["state machines"],
+      "type": "State machines library"
     },
     {
       "name": "Jest",
       "query": "jest",
       "url": "https://jestjs.io",
       "logo": "/jest.png",
-      "description": "Javascript testing library",
+      "description": "Javascript testing framework",
       "familiarity": 1,
-      "tags": ["testing"]
+      "tags": ["testing"],
+      "type": "JS testing"
     },
     {
       "name": "React Testing Library",
       "query": "react-testing-library",
       "url": "https://testing-library.com/",
-      "description": "React UI testing library",
+      "description": "Utilities for testing React applications",
       "familiarity": 1,
-      "tags": ["react", "testing"]
+      "tags": ["react", "testing"],
+      "type": "React testing"
     }
   ],
   "databases": [
@@ -114,7 +127,8 @@
       "url": "https://neo4j.com",
       "description": "Graph Database",
       "familiarity": 3,
-      "tags": ["graphs"]
+      "tags": ["graphs"],
+      "type": "Graph database"
     },
     {
       "name": "MySQL",
@@ -122,7 +136,8 @@
       "url": "https://mysql.com",
       "description": "Relational Database",
       "familiarity": 4,
-      "tags": ["relational"]
+      "tags": ["relational"],
+      "type": "Relational database"
     },
     {
       "name": "MongoDB",
@@ -130,7 +145,8 @@
       "url": "https://mongodb.com",
       "description": "NoSQL Database",
       "familiarity": 2,
-      "tags": ["NoSQL"]
+      "tags": ["NoSQL"],
+      "type": "Non-relational database"
     }
   ],
   "other": [
@@ -140,14 +156,16 @@
       "url": "https://docker.com",
       "description": "PAAS for containers",
       "familiarity": 2,
-      "tags": ["containers"]
+      "tags": ["containers"],
+      "type": "Containers"
     },
     {
       "name": "Git",
       "query": "git",
       "description": "Version control system",
       "familiarity": 2,
-      "tags": ["VCS"]
+      "tags": ["VCS"],
+      "type": "Version Control"
     }
   ]
 }

@@ -2,7 +2,6 @@ import Section from "../library/Section";
 import TechsGrid from "./TechsGrid";
 import TechItem from "./TechItem";
 import TechItemLogo from "./TechItemLogo";
-import Stars from "../library/Stars";
 
 export function TechnologiesSection({ title, techs }) {
   return (
@@ -10,13 +9,15 @@ export function TechnologiesSection({ title, techs }) {
       <TechsGrid>
         {techs.map(
           (
-            { name, logo, domain, description, familiarity = 0, tags = [] },
+            { name, logo, domain, description, tags = [], type = "" },
             index
           ) => (
             <a key={index} href={domain} target="_blank">
-              <TechItem name={name} description={description} tags={tags}>
+              <TechItem type={type} description={description} tags={tags}>
                 <TechItemLogo name={name} logo={logo} />
-                <Stars stars={familiarity} />
+                <span className="text-xs font-bold dark:text-gray-50 flex-grow text-blue-800">
+                  {name}
+                </span>
               </TechItem>
             </a>
           )
