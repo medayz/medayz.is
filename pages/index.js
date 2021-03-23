@@ -28,16 +28,16 @@ function HomeHead() {
 }
 
 export default function Home({
-  avatar,
-  blog,
-  url,
-  twitter_username,
-  github_username,
-  frontend_techs,
-  backend_techs,
-  other_techs,
-  databases,
-  repos
+  avatar = "",
+  blog = "",
+  url = "",
+  twitter_username = "medayz1337",
+  github_username = "medayz",
+  frontend_techs = [],
+  backend_techs = [],
+  other_techs = [],
+  databases = [],
+  repos = []
 }) {
   const socialLinks = [
     {
