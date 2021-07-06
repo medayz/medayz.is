@@ -14,8 +14,8 @@ export default function Bio() {
         Hello, my full name is Mohamed Ayoub Zahir! too long right ? 😁
       </p>
       <p className="mb-4">
-        Well you can call me Ayoub, and on internet I just use medayz everywhere
-        as my username!
+        Well you can call me Mohamed, and on internet I just use medayz
+        everywhere as my username!
       </p>
       <p className="mb-8">
         I spend my time either creating bugs or fixing them 🐛
