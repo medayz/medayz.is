@@ -29,6 +29,14 @@
       "type": "Programming language"
     },
     {
+      "name": "TypeScript",
+      "query": "typescript",
+      "description": "Javascript superset that adds type safety",
+      "familiarity": 3,
+      "tags": ["language"],
+      "type": "Programming language"
+    },
+    {
       "name": "React.js",
       "query": "react",
       "url": "https://reactjs.org",
